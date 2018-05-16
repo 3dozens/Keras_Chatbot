@@ -1,0 +1,26 @@
+--- weights_512_s_10000_w_10000_epoch_100__from_logits.h5
+How are you?
+-> been better i read about what's been happening with you i should have called for all talk
+
+Are you hangry?
+-> i am and you're will i've seen your picture you how i would go the good home the us all going
+
+--- weights_512_s_10000_w_10000_e_300 loss: 0.2108
+How are you?
+-> great i'm getting married at least i think i am
+
+Are you hangry?
+-> i am and you're will i've seen your picture that's how i recognize you i almost said something at the store but it would jack days she's i lost to be i but it
+
+--- weights_512_s_10000_w_10000_l2.h5 loss: 0.003
+I love you.
+-> are hear man your that's me then i'll think you say
+
+I like you.
+-> is oh don't me i have don't get get when i i'll
+
+How are you?
+-> is
+
+Are you hangry?
+-> all no about
