@@ -153,15 +153,13 @@ def train():
 
 def inference():
     encoder_inputs = Input(shape=(None,))
-
-    enc_emb    = embedding(encoder_inputs)
-    layer1_out = encoder_lstm(enc_emb)
-    _, h, c    = encoder_lstm2(layer1_out)
+    enc_emb        = embedding(encoder_inputs)
+    layer1_out     = encoder_lstm(enc_emb)
+    _, h, c        = encoder_lstm2(layer1_out)
 
     encoder_states = [h, c]
 
     encoder_model = Model(encoder_inputs, encoder_states)
-    #print(encoder_model.summary()); exit()
     encoder_model.load_weights(WEIGHTS_FILE, by_name=True)
 
     # 学習時はencoder_statesをそのまま入力するだけだったのでstateのInputは不要だったが、
@@ -189,15 +187,6 @@ def inference():
     input_seq = tokenizer.texts_to_sequences(["The thing is, Cameron -- I'm at the mercy of a particularly hideous breed of loser."])
     # input_seq = tokenizer.texts_to_sequences(["Why?"])
     input_seq = np.array(input_seq)
-    # input_seq = input_seq[:,:,np.newaxis]
-
-    # with open("./data_set/cornell movie-dialogs corpus/train.enc") as f:
-    #     test_enc_input = f.readlines()[:10000]
-    # test_enc_input = tokenizer.texts_to_sequences(test_enc_input)
-    # test_enc_input = np.array([np.array(test) for test in test_enc_input])
-    # test_enc_input = [test[:,np.newaxis] for test in test_enc_input] # (entire_size, timesteps) => (entire, timesteps, feature_dim)
-
-    # input_seqs = train_enc_input
     input_seqs = [input_seq]
 
     results = []
@@ -205,7 +194,6 @@ def inference():
     """ encode """
     for i, input_seq in enumerate(input_seqs):
         print(i)
-        # print(input_seq.shape); exit()
         states_values = encoder_model.predict(input_seq) # (timesteps, feature_dim) => (batch_size, timesteps, feature_dim)
         # 1st layer is initialized by encoder states
         # 2nd layer is initialized by zeros
